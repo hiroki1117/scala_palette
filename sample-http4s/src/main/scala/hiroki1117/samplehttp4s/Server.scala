@@ -9,7 +9,7 @@ import com.comcast.ip4s.*
 import org.http4s.ember.server.EmberServerBuilder
 import scala.concurrent.duration.*
 import org.http4s.server.middleware.Logger
-import hiroki1117.samplehttp4s.adapter.http.route.UsersRoutes
+import hiroki1117.samplehttp4s.adapter.http.route.{UsersRoutes, TasksRoutes}
 
 object Server:
   def run[F[_]: Async: Network]: F[Nothing] =
