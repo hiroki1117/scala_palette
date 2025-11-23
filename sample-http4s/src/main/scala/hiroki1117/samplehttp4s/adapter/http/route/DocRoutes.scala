@@ -1,11 +1,12 @@
 package hiroki1117.samplehttp4s.adapter.http.route
 
 import cats.effect.Async
+
+import hiroki1117.samplehttp4s.adapter.http.endpoint.{TasksEndpoint, UsersEndpoint}
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 import sttp.tapir.swagger.SwaggerUIOptions
 import sttp.tapir.swagger.bundle.SwaggerInterpreter
-import hiroki1117.samplehttp4s.adapter.http.endpoint.{UsersEndpoint, TasksEndpoint}
 
 /** API ドキュメント（OpenAPI + Swagger UI）を提供するルート */
 object DocRoutes:
@@ -18,12 +19,12 @@ object DocRoutes:
     val swaggerEndpoints = SwaggerInterpreter(
       swaggerUIOptions = SwaggerUIOptions.default.copy(
         pathPrefix = List("docs"),
-        yamlName = "docs.yaml"
+        yamlName = "docs.yaml",
       )
     ).fromEndpoints[F](
       allEndpoints,
       "Sample HTTP4s API",
-      "1.0.0"
+      "1.0.0",
     )
 
     // Http4s ルートに変換

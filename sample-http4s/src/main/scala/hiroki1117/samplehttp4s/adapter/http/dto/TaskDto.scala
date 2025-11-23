@@ -1,16 +1,16 @@
 package hiroki1117.samplehttp4s.adapter.http.dto
 
+import hiroki1117.samplehttp4s.domain.model.Task
 import io.circe.generic.auto.*
 import org.http4s.*
 import org.http4s.circe.*
-import hiroki1117.samplehttp4s.domain.model.Task
 
 /** HTTPレスポンス用のTaskDTO */
 final case class TaskDto(id: Long, userId: Long, title: String, done: Boolean)
 
 object TaskDto:
   // Circe の自動導出を使用
-  given [F[_]]: EntityEncoder[F, TaskDto]       = jsonEncoderOf[F, TaskDto]
+  given [F[_]]: EntityEncoder[F, TaskDto] = jsonEncoderOf[F, TaskDto]
   given [F[_]]: EntityEncoder[F, List[TaskDto]] = jsonEncoderOf[F, List[TaskDto]]
 
   /** domain.model.Task から TaskDto への変換 */

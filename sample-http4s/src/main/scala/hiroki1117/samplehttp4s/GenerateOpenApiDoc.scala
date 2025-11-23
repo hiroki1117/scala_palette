@@ -1,10 +1,11 @@
 package hiroki1117.samplehttp4s
 
-import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
-import sttp.apispec.openapi.circe.yaml._
-import hiroki1117.samplehttp4s.adapter.http.endpoint.{UsersEndpoint, TasksEndpoint}
-import java.nio.file.{Files, Paths, StandardOpenOption}
 import java.nio.charset.StandardCharsets
+import java.nio.file.{Files, Paths, StandardOpenOption}
+
+import hiroki1117.samplehttp4s.adapter.http.endpoint.{TasksEndpoint, UsersEndpoint}
+import sttp.apispec.openapi.circe.yaml._
+import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
 
 /** OpenAPI仕様書を生成してファイルに出力 */
 object GenerateOpenApiDoc:
@@ -22,16 +23,16 @@ object GenerateOpenApiDoc:
 
     // ファイルに書き込み
     val outputPath = Paths.get("docs/openapi.yaml")
-    
+
     // ディレクトリを作成（存在しない場合）
     Files.createDirectories(outputPath.getParent)
-    
+
     // ファイルに書き込み
     Files.write(
       outputPath,
       yamlContent.getBytes(StandardCharsets.UTF_8),
       StandardOpenOption.CREATE,
-      StandardOpenOption.TRUNCATE_EXISTING
+      StandardOpenOption.TRUNCATE_EXISTING,
     )
 
     println(s"✅ OpenAPI仕様書を生成しました: ${outputPath.toAbsolutePath}")

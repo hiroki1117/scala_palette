@@ -1,10 +1,10 @@
 package hiroki1117.samplehttp4s.adapter.http.endpoint
 
+import hiroki1117.samplehttp4s.adapter.http.dto._
+import io.circe.generic.auto.*
+import sttp.model.StatusCode
 import sttp.tapir._
 import sttp.tapir.json.circe.*
-import sttp.model.StatusCode
-import io.circe.generic.auto.*
-import hiroki1117.samplehttp4s.adapter.http.dto._
 
 /** Users エンドポイント定義 */
 object UsersEndpoint:
@@ -78,5 +78,5 @@ object UsersEndpoint:
     getUser,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
   )

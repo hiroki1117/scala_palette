@@ -2,11 +2,12 @@ package hiroki1117.samplehttp4s.adapter.http.route
 
 import cats.effect.Async
 import cats.syntax.all.*
+
+import hiroki1117.samplehttp4s.adapter.http.dto._
+import hiroki1117.samplehttp4s.adapter.http.endpoint.UsersEndpoint
+import hiroki1117.samplehttp4s.domain.model.User
 import org.http4s.*
 import sttp.tapir.server.http4s.Http4sServerInterpreter
-import hiroki1117.samplehttp4s.adapter.http.endpoint.UsersEndpoint
-import hiroki1117.samplehttp4s.adapter.http.dto._
-import hiroki1117.samplehttp4s.domain.model.User
 
 object UsersRoutes:
 
@@ -14,7 +15,7 @@ object UsersRoutes:
     // ダミーのドメインモデルデータ
     val dummyUsers: List[User] = List(
       User(1, "Alice"),
-      User(2, "Bob")
+      User(2, "Bob"),
     )
 
     // Tapir エンドポイントの実装
@@ -26,10 +27,10 @@ object UsersRoutes:
 
     val getUserRoute = UsersEndpoint.getUser.serverLogic[F] { id =>
       dummyUsers.find(_.id == id) match
-        case Some(user) => 
+        case Some(user) =>
           // domain -> DTO 変換
           UserDto.fromDomain(user).asRight[ErrorResponse].pure[F]
-        case None => 
+        case None =>
           ErrorResponse(s"User $id not found").asLeft[UserDto].pure[F]
     }
 
@@ -40,11 +41,12 @@ object UsersRoutes:
       UserDto.fromDomain(created).asRight[ErrorResponse].pure[F]
     }
 
-    val updateUserRoute = UsersEndpoint.updateUser.serverLogic[F] { case (id, req) =>
-      // DTO -> domain 変換してビジネスロジック実行
-      val updated = User(id, req.name)
-      // domain -> DTO 変換してレスポンス
-      UserDto.fromDomain(updated).asRight[ErrorResponse].pure[F]
+    val updateUserRoute = UsersEndpoint.updateUser.serverLogic[F] {
+      case (id, req) =>
+        // DTO -> domain 変換してビジネスロジック実行
+        val updated = User(id, req.name)
+        // domain -> DTO 変換してレスポンス
+        UserDto.fromDomain(updated).asRight[ErrorResponse].pure[F]
     }
 
     val deleteUserRoute = UsersEndpoint.deleteUser.serverLogic[F] { id =>
@@ -58,6 +60,6 @@ object UsersRoutes:
         getUserRoute,
         createUserRoute,
         updateUserRoute,
-        deleteUserRoute
+        deleteUserRoute,
       )
     )
