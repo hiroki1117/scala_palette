@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sample-http4s:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sample-http4s
+    ports:
+      - "8081:8081"
+    environment:
+      - JAVA_OPTS=-Xmx512m -Xms256m
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/hello"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

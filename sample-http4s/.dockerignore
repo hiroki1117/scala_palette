@@ -1,0 +1,28 @@
+# sbt関連
+target/
+project/target/
+project/project/
+
+# IDE関連
+.idea/
+.vscode/
+*.iml
+.metals/
+.bloop/
+.bsp/
+
+# Git関連
+.git/
+.gitignore
+
+# ログ
+*.log
+
+# OS関連
+.DS_Store
+Thumbs.db
+
+# その他
+*.swp
+*.swo
+*~
