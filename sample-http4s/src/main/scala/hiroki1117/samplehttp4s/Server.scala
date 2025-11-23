@@ -9,7 +9,7 @@ import com.comcast.ip4s.*
 import org.http4s.ember.server.EmberServerBuilder
 import scala.concurrent.duration.*
 import org.http4s.server.middleware.Logger
-import hiroki1117.samplehttp4s.adapter.http.route.{UsersRoutes, TasksRoutes, DocRoutes}
+import hiroki1117.samplehttp4s.adapter.http.route.AppRoutes
 
 object Server:
   def run[F[_]: Async: Network]: F[Nothing] =
@@ -19,10 +19,8 @@ object Server:
       case GET -> Root / "hello" =>
         Ok("hello")
 
-    val userRoutes = UsersRoutes.routes[F]
-    val taskRoutes = TasksRoutes.routes[F]
-    val docRoutes = DocRoutes.routes[F]
-    val httpApp = (helloRoute <+> userRoutes <+> taskRoutes <+> docRoutes).orNotFound
+    val appRoutes = AppRoutes.routes[F]
+    val httpApp = (helloRoute <+> appRoutes).orNotFound
     val finalHttpApp = Logger.httpApp(true, true)(httpApp)
 
     EmberServerBuilder.default[F]
