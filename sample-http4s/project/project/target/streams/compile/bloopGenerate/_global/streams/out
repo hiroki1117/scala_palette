@@ -1,0 +1,4 @@
+[0m[[0m[0mdebug[0m] [0m[0m[sample-http4s-build-build] Classpath dependencies List()[0m
+[0m[[0m[0mdebug[0m] [0m[0m[sample-http4s-build-build] Dependencies from configurations List()[0m
+[0m[[0m[0mdebug[0m] [0m[0mBloop wrote the configuration of project 'sample-http4s-build-build' to '/Users/hiroki.ohno/github/scala_palette/sample-http4s/project/project/.bloop/sample-http4s-build-build.json'[0m
+[0m[[0m[32msuccess[0m] [0m[0mGenerated .bloop/sample-http4s-build-build.json[0m

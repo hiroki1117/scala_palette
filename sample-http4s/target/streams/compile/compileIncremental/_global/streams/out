@@ -1,0 +1,57 @@
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 31 products, 6 sources, 16 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/hiroki1117/samplehttp4s/Jokes.scala, ${BASE}/src/main/scala/hiroki1117/samplehttp4s/HelloWorld.scala, ${BASE}/src/main/scala/hiroki1117/samplehttp4s/Server.scala, ${BASE}/src/main/scala/hiroki1117/samplehttp4s/Main.scala, ${BASE}/src/main/scala/hiroki1117/samplehttp4s/Samplehttp4sServer.scala, ${BASE}/src/main/scala/hiroki1117/samplehttp4s/Samplehttp4sRoutes.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/hiroki1117/samplehttp4s/Server.scala), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(${BASE}/src/main/scala/hiroki1117/samplehttp4s/Server.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(hiroki1117.samplehttp4s.Server)[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(hiroki1117.samplehttp4s.Server)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(${BASE}/src/main/scala/hiroki1117/samplehttp4s/Server.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: hiroki1117.samplehttp4s.Server[0m
+[0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /Users/hiroki.ohno/github/scala_palette/sample-http4s/target/scala-3.3.6/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mReturning already retrieved and compiled bridge: /Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-sbt-bridge/3.3.6/scala3-sbt-bridge-3.3.6.jar.[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 15a256f for Scala Compiler version 3.3.6[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-encoding[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utf8[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-deprecation[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-feature[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-unchecked[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-language:experimental.macros[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-language:higherKinds[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-language:implicitConversions[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Ykind-projector[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wvalue-discard[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wnonunit-statement[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wunused:implicits[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wunused:explicits[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wunused:imports[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wunused:locals[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wunused:params[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Wunused:privates[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-Xfatal-warnings[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/Users/hiroki.ohno/github/scala_palette/sample-http4s/target/scala-3.3.6/classes:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.6/scala3-library_3-3.3.6.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-server_3/0.23.30/http4s-ember-server_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-client_3/0.23.30/http4s-ember-client_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-circe_3/0.23.30/http4s-circe_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-dsl_3/0.23.30/http4s-dsl_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-ember-core_3/0.23.30/http4s-ember-core_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-server_3/0.23.30/http4s-server_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-slf4j_3/2.7.0/log4cats-slf4j_3-2.7.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-client_3/0.23.30/http4s-client_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/keypool_3/0.4.10/keypool_3-0.4.10.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-core_3/0.23.30/http4s-core_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-jawn_3/0.23.30/http4s-jawn_3-0.23.30.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-core_3/0.14.8/circe-core_3-0.14.8.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-jawn_3/0.14.8/circe-jawn_3-0.14.8.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/log4cats-core_3/2.7.0/log4cats-core_3-2.7.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/twitter/hpack/1.0.2/hpack-1.0.2.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect_3/3.5.4/cats-effect_3-3.5.4.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.11.0/cats-core_3-2.11.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-std_3/3.5.7/cats-effect-std_3-3.5.7.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/case-insensitive_3/1.4.2/case-insensitive_3-1.4.2.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-parse_3/1.0.0/cats-parse_3-1.0.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/http4s/http4s-crypto_3/0.2.4/http4s-crypto_3-0.2.4.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-core_3/3.11.0/fs2-core_3-3.11.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/co/fs2/fs2-io_3/3.11.0/fs2-io_3-3.11.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/comcast/ip4s-core_3/3.6.0/ip4s-core_3-3.6.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/literally_3/1.1.0/literally_3-1.1.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scodec/scodec-bits_3/1.1.38/scodec-bits_3-1.1.38.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/vault_3/3.6.0/vault_3-3.6.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/log4s/log4s_3/1.10.0/log4s_3-1.10.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-fs2_3/2.4.0/jawn-fs2_3-2.4.0.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/jawn-parser_3/1.5.1/jawn-parser_3-1.5.1.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/circe/circe-numbers_3/0.14.8/circe-numbers_3-0.14.8.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-kernel_3/3.5.7/cats-effect-kernel_3-3.5.7.jar:/Users/hiroki.ohno/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.11.0/cats-kernel_3-2.11.0.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 0.338747708 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m
+[0m[[0m[0mdebug[0m] [0m[0mNew invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
+[0m[[0m[0mdebug[0m] [0m[0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0mFinal step, transitive dependencies:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: hiroki1117.samplehttp4s.Server[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding hiroki1117.samplehttp4s.Main by hiroki1117.samplehttp4s.Server[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated macros due to upstream dependencies change: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mNo classes were invalidated.[0m

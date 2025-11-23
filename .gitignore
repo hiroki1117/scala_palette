@@ -1,0 +1,9 @@
+# Metals (Scala Language Server)
+.metals/
+.bloop/
+.bsp/
+metals.sbt
+
+# VSCode
+.vscode/
+
