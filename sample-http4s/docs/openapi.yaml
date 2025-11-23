@@ -2,10 +2,6 @@ openapi: 3.1.0
 info:
   title: Sample HTTP4s API
   version: 1.0.0
-  description: HTTP4s + Tapir sample API documentation
-servers:
-- url: http://localhost:8081
-  description: Local development server
 paths:
   /users:
     get:
