@@ -11,7 +11,7 @@ val dependencies = Seq(
   "org.http4s" %% "http4s-ember-server" % Http4sVersion,
   "org.http4s" %% "http4s-ember-client" % Http4sVersion,
   "org.http4s" %% "http4s-circe" % Http4sVersion,
-  "org.http4s" %% "http4s-dsl" % Http4scompVersion,
+  "org.http4s" %% "http4s-dsl" % Http4sVersion,
   // Circe
   "io.circe" %% "circe-generic" % CirceVersion,
   // Tapir
