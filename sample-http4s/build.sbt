@@ -11,7 +11,7 @@ val dependencies = Seq(
   "org.http4s" %% "http4s-ember-server" % Http4sVersion,
   "org.http4s" %% "http4s-ember-client" % Http4sVersion,
   "org.http4s" %% "http4s-circe" % Http4sVersion,
-  "org.http4s" %% "http4s-dsl" % Http4sVersion,
+  "org.http4s" %% "http4s-dsl" % Http4scompVersion,
   // Circe
   "io.circe" %% "circe-generic" % CirceVersion,
   // Tapir
@@ -32,9 +32,12 @@ lazy val root = (project in file("."))
     organization := "hiroki1117",
     name := "sample-http4s",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "3.3.6",
+    scalaVersion := "3.7.4",
     Compile / mainClass := Some("hiroki1117.samplehttp4s.Main"),
     libraryDependencies ++= dependencies,
+    // Scalafix
+    semanticdbEnabled := true,
+    semanticdbVersion := scalafixSemanticdb.revision,
     assembly / assemblyMergeStrategy := {
       case "module-info.class" => MergeStrategy.discard
       case x => (assembly / assemblyMergeStrategy).value.apply(x)
