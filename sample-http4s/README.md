@@ -2,12 +2,6 @@
 
 http4sを使用したScala 3のサンプルアプリケーション
 
-## 機能
-
-- `/hello` - シンプルなHelloエンドポイント
-- `/users` - ユーザー管理API
-- `/tasks` - タスク管理API
-
 ## 開発環境
 
 - Scala 3.3.6
@@ -24,11 +18,6 @@ sbt run
 
 アプリケーションは http://localhost:8081 で起動します。
 
-### 動作確認
-
-```bash
-curl http://localhost:8081/hello
-```
 
 ## Docker実行
 
@@ -57,11 +46,6 @@ docker-compose logs -f
 docker-compose down
 ```
 
-### ヘルスチェック
-
-```bash
-curl http://localhost:8081/hello
-```
 
 ## ビルド
 
@@ -77,24 +61,4 @@ sbt assembly
 
 ```bash
 java -jar target/scala-3.3.6/sample-http4s-assembly-*.jar
-```
-
-## プロジェクト構成
-
-```
-.
-├── Dockerfile              # Dockerイメージ定義
-├── docker-compose.yml      # Docker Compose設定
-├── build.sbt              # sbtビルド設定
-├── project/
-│   └── plugins.sbt        # sbtプラグイン
-└── src/
-    └── main/
-        └── scala/
-            └── hiroki1117/
-                └── samplehttp4s/
-                    ├── Main.scala           # エントリポイント
-                    ├── Server.scala         # サーバー設定
-                    ├── UsersRoutes.scala    # ユーザーAPI
-                    └── TasksRoutes.scala    # タスクAPI
 ```
