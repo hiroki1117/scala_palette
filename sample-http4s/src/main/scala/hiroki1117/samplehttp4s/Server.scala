@@ -7,7 +7,7 @@ import org.http4s.dsl.Http4sDsl
 import com.comcast.ip4s.*
 import org.http4s.ember.server.EmberServerBuilder
 import scala.concurrent.duration.*
-
+import org.http4s.server.middleware.Logger
 
 object Server:
   def run[F[_]: Async: Network]: F[Nothing] =
@@ -15,14 +15,15 @@ object Server:
     import dsl.*
     val helloRoute = HttpRoutes.of[F]:
       case GET -> Root / "hello" =>
-        Ok("hello")
+        Ok("helloaaaa")
 
     val httpApp = helloRoute.orNotFound
+    val finalHttpApp = Logger.httpApp(true, true)(httpApp)
 
     EmberServerBuilder.default[F]
       .withHost(ipv4"0.0.0.0")
       .withPort(port"8081")
-      .withHttpApp(httpApp)
+      .withHttpApp(finalHttpApp)
       .withShutdownTimeout(1.second)
       .build
       .useForever
