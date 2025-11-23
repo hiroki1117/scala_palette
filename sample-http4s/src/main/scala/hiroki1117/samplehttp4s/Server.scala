@@ -1,5 +1,6 @@
 package hiroki1117.samplehttp4s
 
+import cats.syntax.all.*
 import cats.effect.Async
 import fs2.io.net.Network
 import org.http4s.HttpRoutes
@@ -17,7 +18,8 @@ object Server:
       case GET -> Root / "hello" =>
         Ok("helloaaaa")
 
-    val httpApp = helloRoute.orNotFound
+    val userRoutes = UsersRoutes.routes[F]
+    val httpApp = (helloRoute <+> userRoutes).orNotFound
     val finalHttpApp = Logger.httpApp(true, true)(httpApp)
 
     EmberServerBuilder.default[F]
