@@ -15,8 +15,6 @@ object DocRoutes:
     val allEndpoints = UsersEndpoint.all ++ TasksEndpoint.all
 
     // Swagger UIのエンドポイントを生成
-    // GET /hoge/docs で Swagger UI が表示される
-    // GET /hoge/docs/docs.yaml で OpenAPI仕様書（YAML）が取得できる
     val swaggerEndpoints = SwaggerInterpreter(
       swaggerUIOptions = SwaggerUIOptions.default.copy(
         pathPrefix = List("docs"),
