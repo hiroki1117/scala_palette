@@ -1,0 +1,395 @@
+openapi: 3.1.0
+info:
+  title: Sample HTTP4s API
+  version: 1.0.0
+  description: HTTP4s + Tapir sample API documentation
+servers:
+- url: http://localhost:8081
+  description: Local development server
+paths:
+  /users:
+    get:
+      tags:
+      - Users
+      description: ユーザー一覧を取得
+      operationId: getUsers
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+    post:
+      tags:
+      - Users
+      description: 新しいユーザーを作成
+      operationId: postUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{id}:
+    get:
+      tags:
+      - Users
+      description: 指定IDのユーザーを取得
+      operationId: getUsersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: 'Invalid value for: path parameter id'
+          content:
+            text/plain:
+              schema:
+                type: string
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+      - Users
+      description: 指定IDのユーザーを更新
+      operationId: putUsersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+      - Users
+      description: 指定IDのユーザーを削除
+      operationId: deleteUsersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteUserResponse'
+        '400':
+          description: 'Invalid value for: path parameter id'
+          content:
+            text/plain:
+              schema:
+                type: string
+  /users/{userId}/tasks:
+    get:
+      tags:
+      - Tasks
+      description: 指定ユーザーのタスク一覧を取得
+      operationId: getUsersUseridTasks
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskDto'
+        '400':
+          description: 'Invalid value for: path parameter userId'
+          content:
+            text/plain:
+              schema:
+                type: string
+    post:
+      tags:
+      - Tasks
+      description: 新しいタスクを作成
+      operationId: postUsersUseridTasks
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskRequest'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/{userId}/tasks/{id}:
+    get:
+      tags:
+      - Tasks
+      description: 指定IDのタスクを取得
+      operationId: getUsersUseridTasksId
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+        '400':
+          description: 'Invalid value for: path parameter userId, Invalid value for:
+            path parameter id'
+          content:
+            text/plain:
+              schema:
+                type: string
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+      - Tasks
+      description: 指定IDのタスクを更新
+      operationId: putUsersUseridTasksId
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTaskRequest'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+      - Tasks
+      description: 指定IDのタスクを削除
+      operationId: deleteUsersUseridTasksId
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTaskResponse'
+        '400':
+          description: 'Invalid value for: path parameter userId, Invalid value for:
+            path parameter id'
+          content:
+            text/plain:
+              schema:
+                type: string
+components:
+  schemas:
+    CreateTaskRequest:
+      title: CreateTaskRequest
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+    CreateUserRequest:
+      title: CreateUserRequest
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+    DeleteTaskResponse:
+      title: DeleteTaskResponse
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+    DeleteUserResponse:
+      title: DeleteUserResponse
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+    TaskDto:
+      title: TaskDto
+      type: object
+      required:
+      - id
+      - userId
+      - title
+      - done
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        title:
+          type: string
+        done:
+          type: boolean
+    UpdateTaskRequest:
+      title: UpdateTaskRequest
+      type: object
+      required:
+      - title
+      - done
+      properties:
+        title:
+          type: string
+        done:
+          type: boolean
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+    UserDto:
+      title: UserDto
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string

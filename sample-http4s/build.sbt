@@ -11,6 +11,7 @@ lazy val root = (project in file("."))
     name := "sample-http4s",
     version := "0.0.1-SNAPSHOT",
     scalaVersion := "3.3.6",
+    Compile / mainClass := Some("hiroki1117.samplehttp4s.Main"),
     libraryDependencies ++= Seq(
       "org.http4s"      %% "http4s-ember-server" % Http4sVersion,
       "org.http4s"      %% "http4s-ember-client" % Http4sVersion,
@@ -19,6 +20,9 @@ lazy val root = (project in file("."))
       "io.circe"        %% "circe-generic"       % CirceVersion,
       "com.softwaremill.sttp.tapir" %% "tapir-http4s-server" % TapirVersion,
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe"  % TapirVersion,
+      "com.softwaremill.sttp.tapir" %% "tapir-openapi-docs" % TapirVersion,
+      "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % TapirVersion,
+      "com.softwaremill.sttp.apispec" %% "openapi-circe-yaml" % "0.11.3",
       "org.scalameta"   %% "munit"               % MunitVersion           % Test,
       "org.typelevel"   %% "munit-cats-effect"   % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
@@ -28,3 +32,10 @@ lazy val root = (project in file("."))
       case x => (assembly / assemblyMergeStrategy).value.apply(x)
     }
   )
+
+// OpenAPI仕様書を生成するカスタムタスク
+lazy val generateApiDocs = taskKey[Unit]("Generate OpenAPI documentation")
+
+generateApiDocs := {
+  (Compile / runMain).toTask(" hiroki1117.samplehttp4s.GenerateOpenApiDocTask").value
+}
