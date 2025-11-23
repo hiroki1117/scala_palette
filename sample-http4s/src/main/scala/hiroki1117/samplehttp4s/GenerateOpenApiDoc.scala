@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets
 /** OpenAPI仕様書を生成してファイルに出力 */
 object GenerateOpenApiDoc:
 
-  def generate(): Unit =
+  def main(args: Array[String]): Unit =
     // すべてのエンドポイントを集約
     val allEndpoints = UsersEndpoint.all ++ TasksEndpoint.all
 

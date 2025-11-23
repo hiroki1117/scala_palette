@@ -37,5 +37,5 @@ lazy val root = (project in file("."))
 lazy val generateApiDocs = taskKey[Unit]("Generate OpenAPI documentation")
 
 generateApiDocs := {
-  (Compile / runMain).toTask(" hiroki1117.samplehttp4s.GenerateOpenApiDocTask").value
+  (Compile / runMain).toTask(" hiroki1117.samplehttp4s.GenerateOpenApiDoc").value
 }
