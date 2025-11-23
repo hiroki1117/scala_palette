@@ -1,9 +1,10 @@
 package hiroki1117.samplehttp4s.adapter.http.dto
 
+import io.circe.generic.auto._
+import org.http4s._
+import org.http4s.circe._
+
 import hiroki1117.samplehttp4s.domain.model.Task
-import io.circe.generic.auto.*
-import org.http4s.*
-import org.http4s.circe.*
 
 /** HTTPレスポンス用のTaskDTO */
 final case class TaskDto(id: Long, userId: Long, title: String, done: Boolean)

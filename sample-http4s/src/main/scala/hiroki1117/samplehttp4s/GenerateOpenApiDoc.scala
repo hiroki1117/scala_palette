@@ -3,9 +3,10 @@ package hiroki1117.samplehttp4s
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths, StandardOpenOption}
 
-import hiroki1117.samplehttp4s.adapter.http.endpoint.{TasksEndpoint, UsersEndpoint}
 import sttp.apispec.openapi.circe.yaml._
 import sttp.tapir.docs.openapi.OpenAPIDocsInterpreter
+
+import hiroki1117.samplehttp4s.adapter.http.endpoint.{TasksEndpoint, UsersEndpoint}
 
 /** OpenAPI仕様書を生成してファイルに出力 */
 object GenerateOpenApiDoc:

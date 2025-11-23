@@ -2,11 +2,12 @@ package hiroki1117.samplehttp4s.adapter.http.route
 
 import cats.effect.Async
 
-import hiroki1117.samplehttp4s.adapter.http.endpoint.{TasksEndpoint, UsersEndpoint}
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 import sttp.tapir.swagger.SwaggerUIOptions
 import sttp.tapir.swagger.bundle.SwaggerInterpreter
+
+import hiroki1117.samplehttp4s.adapter.http.endpoint.{TasksEndpoint, UsersEndpoint}
 
 /** API ドキュメント（OpenAPI + Swagger UI）を提供するルート */
 object DocRoutes:

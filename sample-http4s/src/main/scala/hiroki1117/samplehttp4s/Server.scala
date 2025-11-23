@@ -1,17 +1,18 @@
 package hiroki1117.samplehttp4s
 
-import scala.concurrent.duration.*
+import scala.concurrent.duration._
 
 import cats.effect.Async
-import cats.syntax.all.*
+import cats.syntax.all._
 
-import com.comcast.ip4s.*
+import com.comcast.ip4s._
 import fs2.io.net.Network
-import hiroki1117.samplehttp4s.adapter.http.route.AppRoutes
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.server.middleware.Logger
+
+import hiroki1117.samplehttp4s.adapter.http.route.AppRoutes
 
 object Server:
   def run[F[_]: Async: Network]: F[Nothing] =

@@ -1,7 +1,7 @@
 package hiroki1117.samplehttp4s.adapter.http.route
 
 import cats.effect.Async
-import cats.syntax.all.*
+import cats.syntax.all._
 
 import org.http4s.HttpRoutes
 

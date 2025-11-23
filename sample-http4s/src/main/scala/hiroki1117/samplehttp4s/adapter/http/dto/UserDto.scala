@@ -1,9 +1,10 @@
 package hiroki1117.samplehttp4s.adapter.http.dto
 
+import io.circe.generic.auto._
+import org.http4s._
+import org.http4s.circe._
+
 import hiroki1117.samplehttp4s.domain.model.User
-import io.circe.generic.auto.*
-import org.http4s.*
-import org.http4s.circe.*
 
 /** HTTPレスポンス用のUserDTO */
 final case class UserDto(id: Long, name: String)
