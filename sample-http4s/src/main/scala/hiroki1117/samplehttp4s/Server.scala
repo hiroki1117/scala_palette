@@ -16,10 +16,11 @@ object Server:
     import dsl.*
     val helloRoute = HttpRoutes.of[F]:
       case GET -> Root / "hello" =>
-        Ok("helloaaaa")
+        Ok("hello")
 
     val userRoutes = UsersRoutes.routes[F]
-    val httpApp = (helloRoute <+> userRoutes).orNotFound
+    val taskRoutes = TasksRoutes.routes[F]
+    val httpApp = (helloRoute <+> userRoutes <+> taskRoutes).orNotFound
     val finalHttpApp = Logger.httpApp(true, true)(httpApp)
 
     EmberServerBuilder.default[F]
