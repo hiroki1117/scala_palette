@@ -1,70 +1,60 @@
 package hiroki1117.samplehttp4s
 
-import cats.effect.Concurrent
+import cats.effect.Async
 import cats.syntax.all.*
-import io.circe.{Encoder, Json}
+import io.circe.generic.auto.*
 import org.http4s.*
 import org.http4s.circe.*
-import org.http4s.dsl.Http4sDsl
+import sttp.tapir.server.http4s.Http4sServerInterpreter
+import hiroki1117.samplehttp4s.api.UsersApi
 
 final case class User(id: Long, name: String)
 
 object User:
-  given Encoder[User] = Encoder.instance { u =>
-    Json.obj(
-      "id"   -> Json.fromLong(u.id),
-      "name" -> Json.fromString(u.name)
-    )
-  }
-
+  // Circe の自動導出を使用（Tapir との互換性のため）
   given [F[_]]: EntityEncoder[F, User]       = jsonEncoderOf[F, User]
   given [F[_]]: EntityEncoder[F, List[User]] = jsonEncoderOf[F, List[User]]
 
 object UsersRoutes:
 
-  def routes[F[_]: Concurrent]: HttpRoutes[F] =
-    val dsl = new Http4sDsl[F]{}
-    import dsl.*
-
+  def routes[F[_]: Async]: HttpRoutes[F] =
     val dummyUsers: List[User] = List(
       User(1, "Alice"),
       User(2, "Bob")
     )
 
-    HttpRoutes.of[F]:
-      // 一覧取得: GET /users
-      case GET -> Root / "users" =>
-        Ok(dummyUsers)
+    // Tapir エンドポイントの実装
+    val listUsersRoute = UsersApi.listUsers.serverLogic[F] { _ =>
+      dummyUsers.asRight[Unit].pure[F]
+    }
 
-      // 1件取得: GET /users/{id}
-      case GET -> Root / "users" / LongVar(id) =>
-        dummyUsers.find(_.id == id) match
-          case Some(user) => Ok(user)
-          case None       => NotFound(Json.obj("message" -> Json.fromString(s"User $id not found")))
+    val getUserRoute = UsersApi.getUser.serverLogic[F] { id =>
+      dummyUsers.find(_.id == id) match
+        case Some(user) => user.asRight[UsersApi.ErrorResponse].pure[F]
+        case None       => UsersApi.ErrorResponse(s"User $id not found").asLeft[User].pure[F]
+    }
 
-      // 作成: POST /users
-      // ※ ダミーなので、常に id=999 のユーザを作った風に返す
-      case req @ POST -> Root / "users" =>
-        req.as[Json].attempt.flatMap {
-          case Right(json) =>
-            val name = json.hcursor.get[String]("name").getOrElse("no-name")
-            val created = User(999, name)
-            Created(created)
-          case Left(_) =>
-            BadRequest(Json.obj("message" -> Json.fromString("invalid json")))
-        }
+    val createUserRoute = UsersApi.createUser.serverLogic[F] { req =>
+      val created = User(999, req.name)
+      created.asRight[UsersApi.ErrorResponse].pure[F]
+    }
 
-      // 更新: PUT /users/{id}
-      case req @ PUT -> Root / "users" / LongVar(id) =>
-        req.as[Json].attempt.flatMap {
-          case Right(json) =>
-            val name = json.hcursor.get[String]("name").getOrElse("no-name")
-            val updated = User(id, name)
-            Ok(updated)
-          case Left(_) =>
-            BadRequest(Json.obj("message" -> Json.fromString("invalid json")))
-        }
+    val updateUserRoute = UsersApi.updateUser.serverLogic[F] { case (id, req) =>
+      val updated = User(id, req.name)
+      updated.asRight[UsersApi.ErrorResponse].pure[F]
+    }
 
-      // 削除: DELETE /users/{id}
-      case DELETE -> Root / "users" / LongVar(id) =>
-        Ok(Json.obj("message" -> Json.fromString(s"User $id deleted (dummy)")))
+    val deleteUserRoute = UsersApi.deleteUser.serverLogic[F] { id =>
+      UsersApi.DeleteResponse(s"User $id deleted (dummy)").asRight[Unit].pure[F]
+    }
+
+    // Http4s ルートに変換
+    Http4sServerInterpreter[F]().toRoutes(
+      List(
+        listUsersRoute,
+        getUserRoute,
+        createUserRoute,
+        updateUserRoute,
+        deleteUserRoute
+      )
+    )
